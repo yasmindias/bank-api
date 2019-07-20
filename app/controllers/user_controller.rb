@@ -1,12 +1,12 @@
 class UserController < ApplicationController
   before_action :find_user, only: [:show, :destroy, :update]
 
-  def index #returns all users
+  def index
     users = User.order('created_at DESC')
     render json: users, status: :ok
   end
 
-  def show #return one user
+  def show
     render json: @user, status: :ok
   end
 
