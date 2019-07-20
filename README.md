@@ -141,3 +141,127 @@ Only need to send the fields that will be updated.
     "message": "User deleted."
 }
 ```
+
+
+
+
+
+
+### Accounts
+
+#### ```GET /account```
+
+**Response Example**
+```
+[
+    {
+        "id": 1,
+        "branch": "0001",
+        "number": "000001",
+        "digit": "0",
+        "balance": "2500.55",
+        "user_id": 1,
+        "created_at": "2019-07-20T21:44:46.096Z",
+        "updated_at": "2019-07-20T21:44:46.096Z"
+    },
+    {
+        "id": 2,
+        "branch": "0001",
+        "number": "000002",
+        "digit": "0",
+        "balance": "15000.0",
+        "user_id": 2,
+        "created_at": "2019-07-20T21:44:46.096Z",
+        "updated_at": "2019-07-20T21:44:46.096Z"
+    }
+]
+```
+
+&nbsp;
+#### ```GET /account/:id```
+
+**Response Example**
+```
+{
+    "id": 1,
+    "branch": "0001",
+    "number": "000001",
+    "digit": "0",
+    "balance": "2500.55",
+    "user_id": 1,
+    "created_at": "2019-07-20T21:44:46.096Z",
+    "updated_at": "2019-07-20T21:44:46.096Z"
+}
+```
+
+&nbsp;
+#### ```POST /account```
+
+| Field    | Type   | Required | Description        |
+|----------|--------|----------|--------------------|
+| branch   | string | true     | Agência            |
+| number   | string | true     | Número da Conta    |
+| digit    | string | true     | Digito Verificador |
+| balance  | string | true     | Saldo da conta     |
+| user_id  | string | true     | Id do usuário      |
+
+**Request Example**
+```
+{
+    "branch": "0001",
+    "number": "000002",
+    "digit": "0",
+    "user_id" : "1",
+    "balance": 150.50
+}
+```
+
+**Response Example**
+```
+{
+    "id": 2,
+    "branch": "0001",
+    "number": "000002",
+    "digit": "0",
+    "balance": "150.5",
+    "user_id": 1,
+    "created_at": "2019-07-20T21:44:46.096Z",
+    "updated_at": "2019-07-20T21:44:46.096Z"
+}
+```
+
+&nbsp;
+#### ```PUT /account/:id```
+
+Only need to send the fields that will be updated. 
+
+**Request Example**
+```
+{
+   	"amount": 1190.50
+}
+```
+
+**Response Example**
+```
+"user": {
+    "id": 2,
+    "balance": "1190.5",
+    "user_id": 1,
+    "branch": "0001",
+    "number": "000002",
+    "digit": "0",
+    "created_at": "2019-07-20T21:44:46.096Z",
+    "updated_at": "2019-07-20T21:54:44.020Z"
+}
+```
+
+&nbsp;
+#### ```DELETE /account/:id```
+
+**Response Example**
+```
+{
+    "message": "Account deleted."
+}
+```
