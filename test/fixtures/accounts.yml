@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  branch: MyString
+  number: MyString
+  digit: MyString
+  user: one
+
+two:
+  branch: MyString
+  number: MyString
+  digit: MyString
+  user: two
