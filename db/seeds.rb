@@ -7,14 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create({
-    first_name: "Yasmin Dias",
+    name: "Jane Doe",
     tax_document: "69443151065",
-    email: "yasmin_dias@emailhost.com"
+    email: "janedoe@emailhost.com"
 })
 
 
 User.create({
-    first_name: "Pessoa Juridica",
+    name: "Pessoa Juridica",
     tax_document: "16233225000128",
     email: "pessoajuridica@emailhost.com"
 })

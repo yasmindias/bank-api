@@ -16,20 +16,20 @@ ActiveRecord::Schema.define(version: 2019_07_20_194349) do
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.string "branch"
-    t.string "number"
-    t.string "digit"
-    t.decimal "balance"
-    t.bigint "user_id"
+    t.string "branch", null: false
+    t.string "number", null: false
+    t.string "digit", null: false
+    t.decimal "balance", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.bigint "source_id"
-    t.bigint "destination_id"
-    t.decimal "amount"
+    t.bigint "source_id", null: false
+    t.bigint "destination_id", null: false
+    t.decimal "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["destination_id"], name: "index_transactions_on_destination_id"
