@@ -29,7 +29,7 @@ class UserController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      render json: {user: @user}, status: :ok
+      render json: @user, status: :ok
     else
       render json: {errors: @user.errors}, status: :unprocessable_entity
     end
