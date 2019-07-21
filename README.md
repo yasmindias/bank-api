@@ -37,9 +37,31 @@ db_password: [db_password]
 
 ## Usage
 
+### Authentication
+ 
+In the header of every request must be sent the "auth_token". This token is valid for 1 day, after this period another token must be generated.  
+ 
+```POST /api/auth```
+
+**Request Example**
+```
+{
+	"branch": "0001",
+	"number": "000001",
+	"password": "123456"
+}
+```
+
+**Response Example**
+```
+{
+    "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoxLCJleHAiOjE1NjM3NjkxOTF9.9HyNOsIXxAbsZr0jmotqCAxSbXDhW-Dj57um-pSBuJA"
+}
+```
+
 ### Users
 
-#### ```GET /buyer```
+#### ```GET /api/user```
 
 **Response Example**
 ```
@@ -64,7 +86,7 @@ db_password: [db_password]
 ```
 
 &nbsp;
-#### ```GET /buyer/:id```
+#### ```GET /api/user/:id```
 
 **Response Example**
 ```
@@ -79,7 +101,7 @@ db_password: [db_password]
 ```
 
 &nbsp;
-#### ```POST /buyer```
+#### ```POST /api/user```
 
 | Field       | Type   | Required |
 |-------------|--------|----------|
@@ -109,7 +131,7 @@ db_password: [db_password]
 ```
 
 &nbsp;
-#### ```PUT /buyer/:id```
+#### ```PUT /api/user/:id```
 
 Only need to send the fields that will be updated. 
 
@@ -133,7 +155,7 @@ Only need to send the fields that will be updated.
 ```
 
 &nbsp;
-#### ```DELETE /buyer/:id```
+#### ```DELETE /api/user/:id```
 
 **Response Example**
 ```
@@ -143,13 +165,9 @@ Only need to send the fields that will be updated.
 ```
 
 
-
-
-
-
 ### Accounts
 
-#### ```GET /account```
+#### ```GET /api/account```
 
 **Response Example**
 ```
@@ -178,7 +196,7 @@ Only need to send the fields that will be updated.
 ```
 
 &nbsp;
-#### ```GET /account/:id```
+#### ```GET /api/account/:id```
 
 **Response Example**
 ```
@@ -195,7 +213,7 @@ Only need to send the fields that will be updated.
 ```
 
 &nbsp;
-#### ```POST /account```
+#### ```POST /api/account```
 
 | Field    | Type   | Required | Description        |
 |----------|--------|----------|--------------------|
@@ -231,7 +249,7 @@ Only need to send the fields that will be updated.
 ```
 
 &nbsp;
-#### ```PUT /account/:id```
+#### ```PUT /api/account/:id```
 
 Only need to send the fields that will be updated. 
 
@@ -257,7 +275,7 @@ Only need to send the fields that will be updated.
 ```
 
 &nbsp;
-#### ```DELETE /account/:id```
+#### ```DELETE /api/account/:id```
 
 **Response Example**
 ```

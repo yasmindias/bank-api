@@ -19,10 +19,13 @@ User.create({
     email: "pessoajuridica@emailhost.com"
 })
 
+cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+
 Account.create({
     branch: "0001",
     number: "000001",
     digit: "0",
+    password_digest: BCrypt::Password.create("123456", cost: cost),
     balance: 100.55,
     user_id: 1
 })
@@ -31,6 +34,7 @@ Account.create({
    branch: "0001",
    number: "000002",
    digit: "0",
+   password_digest: BCrypt::Password.create("654321", cost: cost),
    balance: 10000.00,
    user_id: 2
 })

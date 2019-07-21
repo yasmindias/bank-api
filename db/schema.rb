@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_07_20_194349) do
     t.string "branch", null: false
     t.string "number", null: false
     t.string "digit", null: false
+    t.string "password_digest", null: false
     t.decimal "balance", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
