@@ -28,13 +28,12 @@ ActiveRecord::Schema.define(version: 2019_07_20_194349) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.bigint "source_id", null: false
-    t.bigint "destination_id", null: false
+    t.bigint "account_id", null: false
+    t.string "type", null: false
     t.decimal "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["destination_id"], name: "index_transactions_on_destination_id"
-    t.index ["source_id"], name: "index_transactions_on_source_id"
+    t.index ["account_id"], name: "index_transactions_on_account_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,4 +45,5 @@ ActiveRecord::Schema.define(version: 2019_07_20_194349) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "transactions", "accounts"
 end
