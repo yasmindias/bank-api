@@ -40,7 +40,7 @@ class AccountController < ApplicationController
   end
 
   def balance
-    render json: {account_id: @account.id, balance: @account.get_balance}, status: :unprocessable_entity
+    render json: {account_id: @account.id, balance: @account.get_balance}, status: :ok
   end
 
   private
