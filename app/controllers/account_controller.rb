@@ -1,6 +1,6 @@
 class AccountController < ApplicationController
   skip_before_action :authenticate_request, only: [:create]
-  before_action :find_account, only: [:show, :destroy, :update, :balance]
+  before_action :find_account, except: [:index, :create]
   before_action :find_user, only: [:create]
 
   def index

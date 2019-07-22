@@ -1,4 +1,5 @@
 class TransactionController < ApplicationController
+  before_action :is_same_user?
 
   def show
     transactions = Transaction.where(transaction_id: params[:id])
@@ -40,4 +41,12 @@ class TransactionController < ApplicationController
     params.permit(:source_account_id, :destination_account_id, :amount)
   end
 
+  def is_same_user?
+    @current_user = AuthorizeApiRequest.call(request.headers).result
+    unless @current_user.id.eql?(trs_params[:source_account_id])
+      render json: {status: 401,
+                    error: "Operation is not authorized for user with id = '#{trs_params[:source_account_id]}'."},
+             status: :unauthorized and return
+    end
+  end
 end
