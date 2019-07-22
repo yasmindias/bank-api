@@ -13,13 +13,15 @@ class AccountController < ApplicationController
   end
 
   def create
-    account = Account.new(account_params)
-    if account.save
-      Transaction.create({transaction_id: Transaction.defineTransactionId, transaction_type: "DEPOSIT",
-                                    account_id: account.id, amount: params[:deposit]})
-      render json: account, status: :created
+    if Account.find_by(branch: account_params[:branch], number: account_params[:number])
+      render json: {status: 400, errors: "This account already exists."}, status: :bad_request
     else
-      render json: {status: 402, errors: account.errors}, status: :unprocessable_entity
+      account = Account.new(account_params)
+      if account.save
+        Transaction.create({transaction_id: Transaction.defineTransactionId, transaction_type: "DEPOSIT",
+                                      account_id: account.id, amount: params[:deposit]})
+        render json: account, status: :created
+      end
     end
   end
 
