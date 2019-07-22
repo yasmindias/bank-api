@@ -160,6 +160,7 @@ Only need to send the fields that will be updated.
 **Response Example**
 ```
 {
+    "status": 200,
     "message": "User deleted."
 }
 ```
@@ -177,7 +178,6 @@ Only need to send the fields that will be updated.
         "branch": "0001",
         "number": "000001",
         "digit": "0",
-        "balance": "2500.55",
         "user_id": 1,
         "created_at": "2019-07-20T21:44:46.096Z",
         "updated_at": "2019-07-20T21:44:46.096Z"
@@ -187,7 +187,6 @@ Only need to send the fields that will be updated.
         "branch": "0001",
         "number": "000002",
         "digit": "0",
-        "balance": "15000.0",
         "user_id": 2,
         "created_at": "2019-07-20T21:44:46.096Z",
         "updated_at": "2019-07-20T21:44:46.096Z"
@@ -205,7 +204,6 @@ Only need to send the fields that will be updated.
     "branch": "0001",
     "number": "000001",
     "digit": "0",
-    "balance": "2500.55",
     "user_id": 1,
     "created_at": "2019-07-20T21:44:46.096Z",
     "updated_at": "2019-07-20T21:44:46.096Z"
@@ -213,15 +211,25 @@ Only need to send the fields that will be updated.
 ```
 
 &nbsp;
+#### ```GET /api/balance/:id```
+```
+{
+    "account_id": 1,
+    "balance": "210.5"
+}
+```
+
+
+&nbsp;
 #### ```POST /api/account```
 
-| Field    | Type   | Required | Description        |
-|----------|--------|----------|--------------------|
-| branch   | string | true     | Agência            |
-| number   | string | true     | Número da Conta    |
-| digit    | string | true     | Digito Verificador |
-| balance  | string | true     | Saldo da conta     |
-| user_id  | string | true     | Id do usuário      |
+| Field    | Type    | Required | Description        |
+|----------|---------|----------|--------------------|
+| branch   | string  | true     | Agência            |
+| number   | string  | true     | Número da Conta    |
+| digit    | string  | true     | Digito Verificador |
+| user_id  | string  | true     | Id do usuário      |
+| deposit  | decimal | false    | Valor do depósito  |
 
 **Request Example**
 ```
@@ -230,7 +238,6 @@ Only need to send the fields that will be updated.
     "number": "000002",
     "digit": "0",
     "user_id" : "1",
-    "balance": 150.50
 }
 ```
 
@@ -241,7 +248,6 @@ Only need to send the fields that will be updated.
     "branch": "0001",
     "number": "000002",
     "digit": "0",
-    "balance": "150.5",
     "user_id": 1,
     "created_at": "2019-07-20T21:44:46.096Z",
     "updated_at": "2019-07-20T21:44:46.096Z"
@@ -256,19 +262,18 @@ Only need to send the fields that will be updated.
 **Request Example**
 ```
 {
-   	"amount": 1190.50
+   	"digit": 1
 }
 ```
 
 **Response Example**
 ```
-"user": {
+{
     "id": 2,
-    "balance": "1190.5",
     "user_id": 1,
     "branch": "0001",
     "number": "000002",
-    "digit": "0",
+    "digit": "1",
     "created_at": "2019-07-20T21:44:46.096Z",
     "updated_at": "2019-07-20T21:54:44.020Z"
 }
@@ -280,6 +285,30 @@ Only need to send the fields that will be updated.
 **Response Example**
 ```
 {
+    "status": 200,
     "message": "Account deleted."
 }
 ```
+
+### Transfer
+
+#### ```POST /api/transfer```
+
+**Request Example**
+```
+{
+	"source_account_id": 2,
+	"destination_account_id": 1,
+	"amount": 30.00
+}
+```
+
+**Response Example**
+```
+{
+    "status": 200,
+    "message": "Transfer completed successfully."
+}
+```
+
+&nbsp;

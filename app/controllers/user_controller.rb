@@ -22,7 +22,7 @@ class UserController < ApplicationController
 
   def destroy
     if @user.destroy
-      render json: {message: "User deleted."}, status: :ok
+      render json: {status: 200, message: "User deleted."}, status: :ok
     else
       render json: {status: 422, errors: @user.errors}, status: :unprocessable_entity
     end
