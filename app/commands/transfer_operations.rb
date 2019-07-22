@@ -18,7 +18,7 @@ class TransferOperations
 
       debt_transaction.save && credit_transaction.save
     else
-      raise StandardError.new("Insufficient funds.")
+      raise StandardError.new("Insufficient funds. Operation cancelled.")
     end
   end
 
