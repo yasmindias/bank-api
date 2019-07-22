@@ -3,7 +3,7 @@ class UserController < ApplicationController
   before_action :find_user, only: [:show, :destroy, :update]
 
   def index
-    users = User.order('created_at DESC')
+    users = User.order('id')
     render json: users, status: :ok
   end
 

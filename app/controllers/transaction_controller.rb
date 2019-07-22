@@ -2,7 +2,7 @@ class TransactionController < ApplicationController
 
   def show
     transactions = Transaction.find_by_transaction_id(params[:id])
-    render json: {transactions: transactions}, status: :ok
+    render json: transactions, status: :ok
   end
 
   def create

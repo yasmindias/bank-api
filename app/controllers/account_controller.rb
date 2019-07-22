@@ -4,8 +4,8 @@ class AccountController < ApplicationController
   before_action :find_user, only: [:create]
 
   def index
-    accounts = Account.order('created_at DESC')
-    render json: accounts, status: :ok
+    accounts = Account.order('id')
+    render json: accounts.to_json(except:[:password_digest]), status: :ok
   end
 
   def show
