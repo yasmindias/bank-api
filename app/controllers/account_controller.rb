@@ -1,5 +1,5 @@
 class AccountController < ApplicationController
-
+  skip_before_action :authenticate_request, only: [:create]
   before_action :find_account, only: [:show, :destroy, :update]
   before_action :find_user, only: [:create]
 
@@ -17,7 +17,7 @@ class AccountController < ApplicationController
     if account.save
       render json: account, status: :created
     else
-      render json: {errors: account.errors}, status: :unprocessable_entity
+      render json: {status: 402, errors: account.errors}, status: :unprocessable_entity
     end
   end
 
@@ -25,7 +25,7 @@ class AccountController < ApplicationController
     if @accounts.destroy
       render json: {message: "Account deleted."}, status: :ok
     else
-      render json: {errors: @accounts.errors}, status: :unprocessable_entity
+      render json: {status: 402, errors: @accounts.errors}, status: :unprocessable_entity
     end
   end
 
@@ -33,13 +33,13 @@ class AccountController < ApplicationController
     if @accounts.update_attributes(account_params)
       render json: @accounts, status: :ok
     else
-      render json: {errors: @accounts.errors}, status: :unprocessable_entity
+      render json: {status: 402, errors: @accounts.errors}, status: :unprocessable_entity
     end
   end
 
   private
   def account_params
-    params.require(:account).permit(:branch, :number, :digit, :balance, :user_id)
+    params.permit(:branch, :number, :digit, :balance, :user_id, :password)
   end
 
   def find_account
