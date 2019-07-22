@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2019_07_20_194349) do
     t.string "number", null: false
     t.string "digit", null: false
     t.string "password_digest", null: false
-    t.decimal "balance", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -28,9 +27,10 @@ ActiveRecord::Schema.define(version: 2019_07_20_194349) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.bigint "account_id", null: false
-    t.string "type", null: false
+    t.integer "transaction_id", null: false
+    t.string "transaction_type", null: false
     t.decimal "amount", null: false
+    t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_transactions_on_account_id"

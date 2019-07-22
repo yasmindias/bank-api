@@ -26,8 +26,13 @@ Account.create({
     number: "000001",
     digit: "0",
     password_digest: BCrypt::Password.create("123456", cost: cost),
-    balance: 100.55,
     user_id: 1
+})
+
+Transaction.create({
+   transaction_type: "DEPOSIT",
+   account_id: 1,
+   amount: 100.55
 })
 
 Account.create({
@@ -35,6 +40,11 @@ Account.create({
    number: "000002",
    digit: "0",
    password_digest: BCrypt::Password.create("654321", cost: cost),
-   balance: 10000.00,
    user_id: 2
+})
+
+Transaction.create({
+   transaction_type: "DEPOSIT",
+   account_id: 2,
+   amount: 10000.00
 })
