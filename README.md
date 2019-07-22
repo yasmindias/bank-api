@@ -8,7 +8,13 @@ REST API for bank operations such as money transfer and balance check.
 
 ### Local Setup
 
-1. Add database user info to rails credentials file
+1. In the```database.yml``` file, add the following lines to ```default:```
+```
+username: <%= Rails.application.credentials.db_username %>
+password: <%= Rails.application.credentials.db_password %>
+```  
+
+2. Add database user info to rails credentials file
 
 __Credentials Format__
 
@@ -24,14 +30,17 @@ db_username: [db_username]
 db_password: [db_password]
 ```
 
-2. Create database ```bank_info```
+3. Create database ```bank_info```
 
-3. Run ```rails db:migrate``` to create the schema
-4. _Optional_: Run ```rails db:seed``` to populate the database
+4. Run ```rails db:migrate``` to create the schema
+5. _Optional_: Run ```rails db:seed``` to populate the database
 
 
 ### Docker setup
+The database used in Docker is currently without password to make the execution of this project easier. 
+To add password info is necessary to create a .env file and set the variables in the docker-compose file.
 
+1. Run ```docker-compose up --build```
 
 ### Run tests
 
@@ -212,6 +221,8 @@ Only need to send the fields that will be updated.
 
 &nbsp;
 #### ```GET /api/balance/:id```
+
+**Response Example**
 ```
 {
     "account_id": 1,
@@ -238,6 +249,8 @@ Only need to send the fields that will be updated.
     "number": "000002",
     "digit": "0",
     "user_id" : "1",
+    "password":"123456",
+    "deposit": 100.00
 }
 ```
 

@@ -31,3 +31,5 @@
 
 #Ignore JetBrains IDE config
 /.idea
+
+/config/credentials.yml.enc
