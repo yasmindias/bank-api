@@ -34,6 +34,7 @@ db_password: [db_password]
 
 4. Run ```rails db:migrate``` to create the schema
 5. _Optional_: Run ```rails db:seed``` to populate the database
+5. _Optional_: Run ```rake test``` to run tests
 
 
 ### Docker setup
@@ -41,8 +42,7 @@ The database used in Docker is currently without password to make the execution 
 To add password info is necessary to create a .env file and set the variables in the docker-compose file.
 
 1. Run ```docker-compose up --build```
-
-### Run tests
+2. _Optional:_ For tests run ```docker-compose run bank-api rake test``` after the build.
 
 ## Usage
 

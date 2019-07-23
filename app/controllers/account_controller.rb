@@ -17,7 +17,7 @@ class AccountController < ApplicationController
       render json: {status: 400, errors: "This account already exists."}, status: :bad_request
     else
       account = Account.new(account_params)
-      if account.save
+      if account.save && params[:deposit]
         Transaction.create({transaction_id: Transaction.defineTransactionId, transaction_type: "DEPOSIT",
                                       account_id: account.id, amount: params[:deposit]})
         render json: account, status: :created
